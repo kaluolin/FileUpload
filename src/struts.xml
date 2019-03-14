@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+	
+<struts>
+	<package name="struts2_ajax_demo" namespace="/" extends="struts-default">
+		<action name="uploadaction" class="com.action.FileUploadAction" method="upload">
+			<interceptor-ref name="defaultStack" />
+			
+      		<!-- 配置fileUpload的拦截器 -->  
+            <interceptor-ref name="fileUpload">  
+            	<!-- 配置允许上传的文件类型 -->  
+                <param name="allowedTypes">  
+                	image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/msword,text/plain  
+                </param>  
+                <!-- 配置允许上传的文件大小 -->  
+                <param name="maximumSize">2000000000</param>
+            </interceptor-ref>  
+            
+   			<result name="success">/result_file.jsp</result>
+   			<result name="input">/fileuploads.jsp</result>
+  		</action>
+	</package>
+</struts>
